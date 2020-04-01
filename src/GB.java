@@ -5,7 +5,8 @@ public class GB {
 	String email;
 	String hobby;
 
-	public GB(){
+	public GB()
+	{
 		
 	}
 	

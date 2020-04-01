@@ -19,7 +19,7 @@ public class Method {
 		gb.email = sc.next();
 		System.out.println("취미 : ");
 		gb.hobby = sc.next();
-		System.out.println("입력된 정보 ");
+		System.out.println("입력된 정보는 ");
 		gb.printInfo();
 	}
 	
@@ -41,6 +41,42 @@ public class Method {
 		System.out.println("편집할 정보의 전화번호를 입력하세요.");
 		int phone = sc.nextInt();
 		System.out.println("편집 대상의 전화번호는 " + phone);
+		if(gb == null) {
+			System.out.println("편집할 정보가 없습니다.");
+		}
+		else if (gb.phone == phone) {
+			int num = -1;
+			while(num != 5){
+				System.out.println("GB Management System Menu");
+				System.out.println("1. 이름 편집");
+				System.out.println("2. 전화번호 편집");
+				System.out.println("3. 이메일 편집");
+				System.out.println("4. 취미 편집");
+				System.out.println("5. 종료");
+				num = sc.nextInt();
+				if(num == 1) {
+					System.out.println("이름 : ");
+					gb.name = sc.next();
+				}
+				else if(num == 2) {
+					System.out.println("전화번호 : ");
+					gb.phone = sc.nextInt();
+				}
+				
+				else if(num == 3) {
+					System.out.println("이메일 : ");
+					gb.email = sc.next();
+				}
+					
+				else if(num == 4) {
+					System.out.println("취미 : ");
+					gb.hobby = sc.next();
+				}
+					
+				else if(num == 5)
+					break;
+			}
+		}
 	}
 	
 	public void View() {
