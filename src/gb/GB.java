@@ -23,7 +23,7 @@ public class GB{
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
-		this.hobby = hobby;
+		this.hobby = hobby; 
 	}
 	
 	
