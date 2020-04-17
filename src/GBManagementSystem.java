@@ -13,7 +13,7 @@ public class GBManagementSystem{
 			System.out.println("1. ADD");
 			System.out.println("2. Delete");
 			System.out.println("3. Edit");
-			System.out.println("4. View");
+			System.out.println("4. Views");
 			System.out.println("5. Exit");
 			num = sc.nextInt();
 			if(num == 1)
@@ -23,7 +23,7 @@ public class GBManagementSystem{
 			else if(num == 3)
 				m.Edit();
 			else if(num == 4)
-				m.View();
+				m.Views();
 			else if(num == 5)
 				break;
 		}
