@@ -11,14 +11,14 @@ public class GB{
 	protected String hobby;
 	
 	public GB(){
-		
 	}
-	
+	public GB(GBKind kind){
+		this.kind = kind;
+	}
 	public GB(String name, int phone){
 		this.name = name;
 		this.phone = phone;
 	}
-	
 	public GB(String name, int phone, String email, String hobby){
 		this.name = name;
 		this.phone = phone;
@@ -26,54 +26,68 @@ public class GB{
 		this.hobby = hobby; 
 	}
 	
+	public GB(GBKind kind, String name, int phone, String email, String hobby){
+		this.kind = kind;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.hobby = hobby; 
+	}
 	
 	public GBKind getKind() {
 		return kind;
 	}
-
 	public void setKind(GBKind kind) {
 		this.kind = kind;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public int getPhone() {
 		return phone;
 	}
-
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
-
+	
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getHobby() {
 		return hobby;
 	}
-
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
-	
 	public void printInfo() {
+		String skind = "none";
+		switch(this.kind) {
+		case Family:
+			skind = "Family";
+			break;
+		case Friend:
+			skind = "Friend";
+			break;
+		case Company:
+			skind = "Company";
+			break;
+		default:
+		}
+		System.out.println("kind : " + skind);
 		System.out.println("name : " + name);
 		System.out.println("phone : " + phone);
 		System.out.println("email : " + email);
 		System.out.println("hobby : " + hobby);
 	}
-	
 	public void getUserInput(Scanner sc) {
 		System.out.println("name : ");
 		String name = sc.next();

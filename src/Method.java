@@ -4,6 +4,7 @@ import java.util.Scanner;
 import gb.CompanyGB;
 import gb.FriendGB;
 import gb.GB;
+import gb.GBKind;
 
 public class Method {
 	ArrayList<GB> gbs = new ArrayList<GB>();
@@ -17,25 +18,26 @@ public class Method {
 		int kind = 0;
 		GB gb;
 		while (kind != 1 && kind != 2) {
-			System.out.println("Select Number for GB Kind / 1 ~ 3 : ");
+			
 			System.out.println("1. for Family");
 			System.out.println("2. for Friend");
 			System.out.println("3. for Company");
+			System.out.print("Select Number for GB Kind / 1 ~ 3 : ");
 			kind = sc.nextInt();
 			if (kind == 1) {
-				gb = new GB();
+				gb = new GB(GBKind.Family);
 				gb.getUserInput(sc);
 				gbs.add(gb);
 				break;
 			}
 			else if (kind == 2) {
-				gb = new FriendGB();
+				gb = new FriendGB(GBKind.Friend);
 				gb.getUserInput(sc);
 				gbs.add(gb);
 				break;
 			}
 			else if (kind == 3) {
-				gb = new CompanyGB();
+				gb = new CompanyGB(GBKind.Company);
 				gb.getUserInput(sc);
 				gbs.add(gb);
 				break;
@@ -51,11 +53,12 @@ public class Method {
 		
 		int phone1 = sc.nextInt();
 		int index = -1;
-		for (int i = 0; i<gbs.size(); i++)
+		for (int i = 0; i<gbs.size(); i++) {
 			if (gbs.get(i).getPhone() == phone1) {
 				index = i;
 				break;
 			}
+		}
 		if (index >= 0) {
 			gbs.remove(index);
 			System.out.println(phone1 + " 폰 번호와 관련된 정보 삭제!");
@@ -65,7 +68,7 @@ public class Method {
 			System.out.println("등록된 정보가 없습니다.");
 			return;
 		}
-	}
+	}	
 	public void Edit() {
 		System.out.println("편집할 정보의 전화번호를 입력하세요.");
 		int phone1 = sc.nextInt();
@@ -114,7 +117,6 @@ public class Method {
 	
 	public void Views() {
 		System.out.println("registered GB : " + gbs.size());
-
 		for (int i=0; i<gbs.size(); i++) {
 			gbs.get(i).printInfo();
 		}

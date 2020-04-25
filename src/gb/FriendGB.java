@@ -3,6 +3,10 @@ package gb;
 import java.util.Scanner;
 
 public class FriendGB extends GB {
+	
+	public FriendGB(GBKind kind){
+		super(kind);
+	}
 	public void getUserInput(Scanner sc) {
 		System.out.println("name : ");
 		String name = sc.next();
@@ -27,12 +31,10 @@ public class FriendGB extends GB {
 				break;
 			}
 			else {
-				
 			}
 		}
-
 		System.out.println("hobby : ");
 		String hobby = sc.next();
 		this.setHobby(hobby);
-	}
+	}	
 }
