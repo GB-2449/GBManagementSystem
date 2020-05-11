@@ -2,7 +2,7 @@ package gb;
 
 import java.util.Scanner;
 
-public class GB{
+public abstract class GB implements GBInput {
 
 	protected GBKind kind = GBKind.Family;
 	protected String name;
@@ -68,7 +68,33 @@ public class GB{
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
-	public void printInfo() {
+	public abstract void printInfo();
+	
+	public void setGBName(Scanner input) {
+		System.out.println("이름 : ");
+		String name = input.next();
+		this.setName(name);
+	}
+	
+	public void setGBPhone(Scanner input) {
+		System.out.println("전화번호 : ");
+		int phone = input.nextInt();
+		this.setPhone(phone);
+	}
+
+	public void setGBEmail(Scanner input) {
+		System.out.println("이메일 : ");
+		String email = input.next();
+		this.setEmail(email);
+	}
+	
+	public void setGBHobby(Scanner input) {
+		System.out.println("취미 : ");
+		String hobby = input.next();
+		this.setHobby(hobby);
+	}
+	
+	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {
 		case Family:
@@ -81,28 +107,8 @@ public class GB{
 			skind = "Company";
 			break;
 		default:
+			break;
 		}
-		System.out.println("kind : " + skind);
-		System.out.println("name : " + name);
-		System.out.println("phone : " + phone);
-		System.out.println("email : " + email);
-		System.out.println("hobby : " + hobby);
-	}
-	public void getUserInput(Scanner sc) {
-		System.out.println("name : ");
-		String name = sc.next();
-		this.setName(name);
-		
-		System.out.println("phone : ");
-		int phone = sc.nextInt();
-		this.setPhone(phone);
-		
-		System.out.println("email : ");
-		String email = sc.next();
-		this.setEmail(email);
-		
-		System.out.println("hobby : ");
-		String hobby = sc.next();
-		this.setHobby(hobby);
+		return skind;
 	}
 }
