@@ -10,12 +10,6 @@ public class MenuManager{
 		int num = -1;
 		while(num != 5){
 			showMenu();
-			System.out.println("GB Management System Menu");
-			System.out.println("1. ADD");
-			System.out.println("2. Delete");
-			System.out.println("3. Edit");
-			System.out.println("4. Views");
-			System.out.println("5. Exit");
 			num = sc.nextInt();
 			
 			switch(num) {
