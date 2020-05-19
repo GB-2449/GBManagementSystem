@@ -2,6 +2,8 @@ package gb;
 
 import java.util.Scanner;
 
+import exception.EmailFormatException;
+
 public abstract class GB implements GBInput {
 
 	protected GBKind kind = GBKind.Family;
@@ -58,7 +60,10 @@ public abstract class GB implements GBInput {
 	public String getEmail() {
 		return email;
 	}
-	public void setEmail(String email) {
+	public void setEmail(String email) throws EmailFormatException {
+		if(!email.contains("@") && !email.equals("")) {
+			throw new EmailFormatException();
+		}
 		this.email = email;
 	}
 	
@@ -83,9 +88,16 @@ public abstract class GB implements GBInput {
 	}
 
 	public void setGBEmail(Scanner input) {
-		System.out.println("이메일 : ");
-		String email = input.next();
-		this.setEmail(email);
+		String email = "";
+		while(!email.contains("@")) {
+			System.out.println("이메일 : ");
+			email = input.next();
+			try {
+				this.setEmail(email);
+			} catch (EmailFormatException e) {
+				System.out.println("Incorrect Email Format. put the email address that contain @");
+			}
+		}
 	}
 	
 	public void setGBHobby(Scanner input) {

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import gb.CompanyGB;
@@ -18,33 +19,41 @@ public class GBManager {
 	public void Add() {
 		int kind = 0;
 		GBInput gbInput;
-		while (kind != 1 && kind != 2) {
-			
-			System.out.println("1. for Family");
-			System.out.println("2. for Friend");
-			System.out.println("3. for Company");
-			System.out.print("Select Number for GB Kind / 1 ~ 3 : ");
-			kind = input.nextInt();
-			if (kind == 1) {
-				gbInput = new FamilyGB(GBKind.Family);
-				gbInput.getUserInput(input);
-				gbs.add(gbInput);
-				break;
+		while (kind < 1 || kind > 3) {
+			try {
+				System.out.println("1. for Family");
+				System.out.println("2. for Friend");
+				System.out.println("3. for Company");
+				System.out.print("Select Number for GB Kind / 1 ~ 3 : ");
+				kind = input.nextInt();
+				if (kind == 1) {
+					gbInput = new FamilyGB(GBKind.Family);
+					gbInput.getUserInput(input);
+					gbs.add(gbInput);
+					break;
+				}
+				else if (kind == 2) {
+					gbInput = new FriendGB(GBKind.Friend);
+					gbInput.getUserInput(input);
+					gbs.add(gbInput);
+					break;
+				}
+				else if (kind == 3) {
+					gbInput = new CompanyGB(GBKind.Company);
+					gbInput.getUserInput(input);
+					gbs.add(gbInput);
+					break;
+				}
+				else {
+					System.out.println("Select Number for GB Kind : ");
+				}
 			}
-			else if (kind == 2) {
-				gbInput = new FriendGB(GBKind.Friend);
-				gbInput.getUserInput(input);
-				gbs.add(gbInput);
-				break;
-			}
-			else if (kind == 3) {
-				gbInput = new CompanyGB(GBKind.Company);
-				gbInput.getUserInput(input);
-				gbs.add(gbInput);
-				break;
-			}
-			else {
-				System.out.println("Select Number for GB Kind : ");
+			catch(InputMismatchException e) {
+				System.out.println("Please input 1 ~ 3 !");
+				if(input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
 			}
 		}
 	}
@@ -118,8 +127,6 @@ public class GBManager {
 			gbs.get(i).printInfo();
 		}
 	}
-	
-
 	
 	public void showEditMenu() {
 		System.out.println("GB Management System Menu");

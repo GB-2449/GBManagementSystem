@@ -2,6 +2,8 @@ package gb;
 
 import java.util.Scanner;
 
+import exception.EmailFormatException;
+
 public class CompanyGB extends GB{
 
 	protected String companyEmail;
@@ -23,16 +25,21 @@ public class CompanyGB extends GB{
 		while (answer != 'Y' && answer != 'Y' && answer != 'N' && answer != 'n') {
 			System.out.println("Have an email? (Y/N)");
 			answer = input.next().charAt(0);
-			if (answer == 'Y' || answer == 'y') {
-				setGBEmail(input);
-				break;
-			}
-			else if (answer == 'N' || answer == 'n' ) {
-				this.setEmail("");
-				break;
-			}
-			else {
+			try {
+				if (answer == 'Y' || answer == 'y') {
+					setGBEmail(input);
+					break;
+				}
+				else if (answer == 'N' || answer == 'n' ) {
+					this.setEmail("");
+					break;
+				}
+				else {
 
+				}
+			}
+			catch(EmailFormatException e) {
+				
 			}
 		}
 	}
@@ -42,15 +49,20 @@ public class CompanyGB extends GB{
 		while (answer != 'Y' && answer != 'Y' && answer != 'N' && answer != 'n') {
 			System.out.println("Have an company email? (Y/N)");
 			answer = input.next().charAt(0);
-			if (answer == 'Y' || answer == 'y') {
-				setGBEmail(input);
-				break;
+			try {
+				if (answer == 'Y' || answer == 'y') {
+					setGBEmail(input);
+					break;
+				}
+				else if (answer == 'N' || answer == 'n' ) {
+					this.setEmail("");
+					break;
+				}
+				else {
+
+				}
 			}
-			else if (answer == 'N' || answer == 'n' ) {
-				this.setEmail("");
-				break;
-			}
-			else {
+			catch(EmailFormatException e) {
 				
 			}
 		}
@@ -58,8 +70,8 @@ public class CompanyGB extends GB{
 	
 	public void printInfo() {
 		String skind = getKindString();
-		System.out.println("kind : " + skind + "name : " + name + "phone : " + phone);
-		System.out.println("email : " + email + "company email : " + email + "hobby : " + hobby);
+		System.out.println("kind : " + skind + " name : " + name + " phone : " + phone);
+		System.out.println("email : " + email + " company email : " + email + " hobby : " + hobby);
 	}
 	
 

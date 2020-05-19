@@ -1,34 +1,46 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuManager{
 
 	public static void main(String[] args) {
-		
-		Scanner sc = new Scanner(System.in);
-		GBManager gbManager = new GBManager(sc);
-		
+		Scanner input = new Scanner(System.in);
+		GBManager gbManager = new GBManager(input);
+		selectMenu(input, gbManager);
+	}
+	
+	public static void selectMenu(Scanner input, GBManager gbManager) {
 		int num = -1;
 		while(num != 5){
-			showMenu();
-			num = sc.nextInt();
-			
-			switch(num) {
-			case 1:
-				gbManager.Add();
-				break;
-			case 2:
-				gbManager.Delete();
-				break;
-			case 3:
-				gbManager.Edit();
-				break;
-			case 4:
-				gbManager.Views();
-				break;
-			case 5:
-				break;
-			default:
-				continue;
+			try {
+				showMenu();
+				num = input.nextInt();
+				switch(num) {
+				case 1:
+					gbManager.Add();
+					break;
+				case 2:
+					gbManager.Delete();
+					break;
+				case 3:
+					gbManager.Edit();
+					break;
+				case 4:
+					gbManager.Views();
+					break;
+				case 5:
+					break;
+				default:
+					continue;
+				}
+			}
+			catch(InputMismatchException e){
+				System.out.println("Please input 1 ~ 5 !");
+				if(input.hasNext()) {
+					input.next();
+				}
+				num = -1;
+				System.out.println(num);
 			}
 		}
 	}

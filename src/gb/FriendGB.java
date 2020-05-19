@@ -2,6 +2,8 @@ package gb;
 
 import java.util.Scanner;
 
+import exception.EmailFormatException;
+
 public class FriendGB extends GB {
 	
 	public FriendGB(GBKind kind){
@@ -20,24 +22,31 @@ public class FriendGB extends GB {
 		while (answer != 'Y' && answer != 'Y' && answer != 'N' && answer != 'n') {
 			System.out.println("Have an email? (Y/N)");
 			answer = input.next().charAt(0);
-			if (answer == 'Y' || answer == 'y') {
-				System.out.println("email : ");
-				String email = input.next();
-				this.setEmail(email);
-				break;
+			try {
+				if (answer == 'Y' || answer == 'y') {
+					System.out.println("email : ");
+					String email = input.next();
+					this.setEmail(email);
+					break;
+				}
+				else if (answer == 'N' || answer == 'n' ) {
+					this.setEmail("");
+					break;
+				}
+				else {
+					
+				}
 			}
-			else if (answer == 'N' || answer == 'n' ) {
-				this.setEmail("");
-				break;
+			catch(EmailFormatException e){
+				System.out.println("Incorrect Email Format. put the email address that contain @");
 			}
-			else {
-			}
+
 		}
 	}
 	
 	public void printInfo() {
 		String skind = getKindString();
-		System.out.println("kind : " + skind + "name : " + name + "phone : " + phone);
-		System.out.println("email : " + email + "hobby : " + hobby);
+		System.out.println("kind : " + skind + " name : " + name + " phone : " + phone);
+		System.out.println("email : " + email + " hobby : " + hobby);
 	}
 }
