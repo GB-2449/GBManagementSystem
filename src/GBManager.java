@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -8,9 +9,13 @@ import gb.FriendGB;
 import gb.GBKind;
 import gb.GBInput;
 
-public class GBManager {
+public class GBManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5777041383730348414L;
 	ArrayList<GBInput> gbs = new ArrayList<GBInput>();
-	Scanner input;
+	transient Scanner input;
 	
 	GBManager(Scanner sc){
 		this.input = sc;

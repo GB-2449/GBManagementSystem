@@ -1,11 +1,16 @@
 package gb;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.EmailFormatException;
 
-public abstract class GB implements GBInput {
-
+public abstract class GB implements GBInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 835038756262160973L;
+	
 	protected GBKind kind = GBKind.Family;
 	protected String name;
 	protected int phone;
