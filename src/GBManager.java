@@ -21,6 +21,10 @@ public class GBManager implements Serializable {
 		this.input = sc;
 	}
 	
+    public void setScanner(Scanner input) {
+        this.input = input;
+    }
+    
 	public void Add() {
 		int kind = 0;
 		GBInput gbInput;

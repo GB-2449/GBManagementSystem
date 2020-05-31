@@ -14,10 +14,15 @@ public class MenuManager{
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		GBManager gbManager = getObject("gbmanager.ser");
-		if (gbManager == null)
-			gbManager = new GBManager(input);
+		if (gbManager == null) {
+			gbManager = new GBManager(input);		
+		}
+		else {
+			gbManager.setScanner(input);
+		}
 		selectMenu(input, gbManager);
 		putObject(gbManager, "gbmanager.ser");
+
 	}
 	
 	public static void selectMenu(Scanner input, GBManager gbManager) {
@@ -86,7 +91,6 @@ public class MenuManager{
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-
 			e.printStackTrace();
 		}
 		return gbManager;
