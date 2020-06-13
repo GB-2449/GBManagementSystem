@@ -1,3 +1,4 @@
+package gui;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -6,6 +7,7 @@ import java.util.Scanner;
 import gb.CompanyGB;
 import gb.FamilyGB;
 import gb.FriendGB;
+import gb.GB;
 import gb.GBKind;
 import gb.GBInput;
 
@@ -135,6 +137,14 @@ public class GBManager implements Serializable {
 		for (int i=0; i<gbs.size(); i++) {
 			gbs.get(i).printInfo();
 		}
+	}
+	
+	public int size() {
+		return gbs.size();
+	}
+	
+	public GBInput get(int index) {
+		return (GB) gbs.get(index);
 	}
 	
 	public void showEditMenu() {

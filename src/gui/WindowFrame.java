@@ -5,19 +5,23 @@ import javax.swing.JPanel;
 
 public class WindowFrame extends JFrame {
 	
+	GBManager gbManager;
 	MenuSelection menuselection;
 	GBAdder gbAdder;
 	GBViewer gbViewer;
 	
-	public WindowFrame() {
-		this.menuselection = new MenuSelection(this);
-		this.gbAdder = new GBAdder(this);
-		this.gbViewer = new GBViewer(this);
-		
+	
+	public WindowFrame(GBManager gbManager) {
 		this.setSize(500, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setTitle("GBFrame");
 		
-
+		this.gbManager = gbManager;
+		this.menuselection = new MenuSelection(this);
+		this.gbAdder = new GBAdder(this);
+		this.gbViewer = new GBViewer(this, this.gbManager);
+		
+		
 		this.setupPanel(menuselection);
 		
 		this.setVisible(true);

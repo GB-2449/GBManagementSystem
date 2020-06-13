@@ -1,3 +1,4 @@
+package gui;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -6,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 import log.EventLogger;
 
 public class MenuManager{
@@ -20,6 +22,8 @@ public class MenuManager{
 		else {
 			gbManager.setScanner(input);
 		}
+		
+		WindowFrame frame = new WindowFrame(gbManager);
 		selectMenu(input, gbManager);
 		putObject(gbManager, "gbmanager.ser");
 

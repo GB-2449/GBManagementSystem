@@ -11,7 +11,10 @@ public interface GBInput {
 	public void setEmail(String email) throws EmailFormatException;
 	public void setHobby(String hobby);
 	
+	public String getName();
 	public int getPhone();
+	public String getEmail();
+	public String getHobby();
 	
 	public void getUserInput(Scanner input);
 	
